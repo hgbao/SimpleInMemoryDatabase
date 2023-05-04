@@ -26,7 +26,7 @@
   "overrides": [
     {
       // Typescript rules
-      "files": ["**/*.{ts}"],
+      "files": ["**/*.ts"],
       "rules": {
         "no-unused-vars": "off",
         "@typescript-eslint/consistent-type-imports": "error",
