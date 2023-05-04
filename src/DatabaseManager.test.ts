@@ -32,23 +32,23 @@ describe('DatabaseManager', () => {
     expect(DbManager.get('a')).toEqual('NULL');
   });
 
-  it('should be able to check if value exists', () => {
+  it('should be able to count number of values', () => {
     DbManager.set('a', '1807');
-    expect(DbManager.hasValue('1807')).toEqual('1');
-    expect(DbManager.hasValue('1808')).toEqual('0');
+    expect(DbManager.numEqualTo('1807')).toEqual('1');
+    expect(DbManager.numEqualTo('1808')).toEqual('0');
 
     DbManager.set('a', '1808');
     DbManager.set('b', '1808');
-    expect(DbManager.hasValue('1807')).toEqual('0');
-    expect(DbManager.hasValue('1808')).toEqual('1');
+    expect(DbManager.numEqualTo('1807')).toEqual('0');
+    expect(DbManager.numEqualTo('1808')).toEqual('2');
 
     DbManager.unset('a');
-    expect(DbManager.hasValue('1807')).toEqual('0');
-    expect(DbManager.hasValue('1808')).toEqual('1');
+    expect(DbManager.numEqualTo('1807')).toEqual('0');
+    expect(DbManager.numEqualTo('1808')).toEqual('1');
 
     DbManager.unset('b');
-    expect(DbManager.hasValue('1807')).toEqual('0');
-    expect(DbManager.hasValue('1808')).toEqual('0');
+    expect(DbManager.numEqualTo('1807')).toEqual('0');
+    expect(DbManager.numEqualTo('1808')).toEqual('0');
   });
 
   it('should copy data from parent manager if provided in constructor', () => {
@@ -62,7 +62,7 @@ describe('DatabaseManager', () => {
     expect(AnotherDbManager.get('a')).toEqual('1807');
     expect(AnotherDbManager.get('b')).toEqual('1808');
 
-    expect(AnotherDbManager.hasValue('1807')).toEqual('1');
-    expect(AnotherDbManager.hasValue('1808')).toEqual('1');
+    expect(AnotherDbManager.numEqualTo('1807')).toEqual('1');
+    expect(AnotherDbManager.numEqualTo('1808')).toEqual('1');
   });
 });
