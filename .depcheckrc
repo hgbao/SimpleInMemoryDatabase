@@ -1,4 +1,4 @@
 {
   "ignorePath": ".gitignore",
-  "ignores": ["depcheck"]
+  "ignores": ["depcheck", "@types/*"]
 }
