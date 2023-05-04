@@ -60,7 +60,7 @@ Note that the docker version is not yet supported for file changes watch
 - Using Docker
 
   ```bash
-  $ yarn docker:dev
+  $ npm run docker:dev
   ```
 
 ### Test
