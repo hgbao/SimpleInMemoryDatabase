@@ -1,0 +1,43 @@
+{
+  "name": "simple-in-memory-database",
+  "version": "0.0.1",
+  "packageManager": "yarn@3.5.1",
+  "scripts": {
+    "setup": "yarn husky install",
+    "dev": "NODE_ENV=development nodemon --watch ./src --exec babel-node ./src/index.ts --extensions \".ts\"",
+    "test": "echo \"NO TEST\"",
+    "build": "NODE_ENV=production yarn babel --copy-files --no-copy-ignored ./src --out-dir dist --extensions \".ts\"",
+    "start": "NODE_ENV=production node ./dist",
+    "lint": "yarn tsc && yarn eslint . && yarn prettier --check .",
+    "eslint": "eslint --ignore-path .gitignore --ext .js,.ts",
+    "prettier": "prettier --ignore-path .gitignore --ignore-unknown '!**/*.{js,ts}'",
+    "format": "yarn eslint --fix . && yarn prettier --write .",
+    "docker:dev": "docker build -t image-simple-redis -f Dockerfile . && docker run -i --name simple-redis image-simple-redis"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-explicit-exports-references": "^1.0.2",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "lint-staged": "^13.2.2",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  },
+  "lint-staged": {
+    "*.{ts}": "eslint",
+    "!*.{ts}": "prettier -c"
+  }
+}
