@@ -59,8 +59,8 @@ class DatabaseManager {
     this.decreaseValuesCount(originalValue);
   };
 
-  public hasValue = (value: string): '1' | '0' => {
-    return this.valuesCount[value] > 0 ? '1' : '0';
+  public numEqualTo = (value: string): string => {
+    return (this.valuesCount[value] || 0).toString();
   };
 }
 

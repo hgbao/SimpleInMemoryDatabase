@@ -33,7 +33,7 @@ class TransactionManager {
         return dbManager.unset(params[0]);
       }
       case DATABASE_FUNCTION.NUMEQUALTO: {
-        return dbManager.hasValue(params[0]);
+        return dbManager.numEqualTo(params[0]);
       }
       default:
         break;

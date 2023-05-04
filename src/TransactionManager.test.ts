@@ -7,7 +7,7 @@ jest.mock('./DatabaseManager', () => {
     get: jest.fn(),
     set: jest.fn(),
     unset: jest.fn(),
-    hasValue: jest.fn(),
+    numEqualTo: jest.fn(),
   }));
 });
 
@@ -91,7 +91,7 @@ describe('TransactionManager', () => {
 
     TxManager.commitTransactions();
     TxManager.executeDbCommand(DATABASE_FUNCTION.NUMEQUALTO, '10');
-    expect(newDbManager2.hasValue).toHaveBeenCalledTimes(1);
+    expect(newDbManager2.numEqualTo).toHaveBeenCalledTimes(1);
 
     expect(currentDbManager.set).toHaveBeenCalledTimes(0);
   });
