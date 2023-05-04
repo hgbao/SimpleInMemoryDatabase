@@ -35,6 +35,8 @@ class TransactionManager {
       case DATABASE_FUNCTION.NUMEQUALTO: {
         return dbManager.hasValue(params[0]);
       }
+      default:
+        break;
     }
   };
 
